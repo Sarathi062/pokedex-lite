@@ -30,9 +30,7 @@ const loadGoogleScript = () => {
 };
 
 export default function App() {
-  // ---------------------------
-  // AUTH STATES
-  // ---------------------------
+
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -42,9 +40,7 @@ export default function App() {
     if (savedUser) setUser(JSON.parse(savedUser));
   }, []);
 
-  // ---------------------------
-  // HANDLE GOOGLE LOGIN
-  // ---------------------------
+
   useEffect(() => {
     if (!window.google) return;
 
@@ -80,9 +76,6 @@ export default function App() {
     setUser(userData);
   }
 
-  // ---------------------------
-  // MAIN APP STATES
-  // ---------------------------
   const [page, setPage] = useState(0);
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
@@ -93,9 +86,6 @@ export default function App() {
   return (
     <>
 
-      {/* ------------------------------------------------ */}
-      {/* LOGIN OVERLAY  (BLUR EVERYTHING UNTIL LOGGED IN) */}
-      {/* ------------------------------------------------ */}
       {!user && (
         <div
           style={{
@@ -127,15 +117,10 @@ export default function App() {
         </div>
       )}
 
-      {/* ------------------------------------------------ */}
-      {/* MAIN APP UI AFTER LOGIN */}
-      {/* ------------------------------------------------ */}
 
       <Container maxWidth="lg" sx={{ pb: 5, opacity: user ? 1 : 0.4, pointerEvents: user ? "auto" : "none" }}>
 
-        {/* ------------------------- */}
-        {/* USER PROFILE */}
-        {/* ------------------------- */}
+
         {user && (
           <Box
             sx={{
@@ -169,10 +154,6 @@ export default function App() {
             </Box>
           </Box>
         )}
-
-        {/* ------------------------- */}
-        {/*        HEADER AREA        */}
-        {/* ------------------------- */}
         <Box
           textAlign="center"
           mt={{ xs: 3, md: 5 }}
@@ -210,9 +191,7 @@ export default function App() {
           />
         </Box>
 
-        {/* ------------------------- */}
-        {/*       FILTER SECTION      */}
-        {/* ------------------------- */}
+
         <Box
           sx={{
             width: "100%",
@@ -260,9 +239,6 @@ export default function App() {
           </Card>
         </Box>
 
-        {/* ------------------------- */}
-        {/*         MAIN LIST         */}
-        {/* ------------------------- */}
         <PokemonList
           pokemon={pokemon}
           loading={loading}

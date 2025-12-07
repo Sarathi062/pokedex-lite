@@ -1,18 +1,14 @@
-/* ------------------------------
-   Base global styles
---------------------------------*/
+
 :root {
   --font-main: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-  /* Dark mode palette */
   --color-bg-dark: #ddc5c5;
   --color-text-dark: #e6e6e6;
 
-  /* Light mode palette */
+ 
   --color-bg-light: #fafafa;
   --color-text-light: #1a1a1a;
 
-  /* Accent colors (Pokédex friendly) */
   --color-accent: #ff4757;
   --color-accent-hover: #ff6b81;
 
@@ -30,9 +26,6 @@
   text-rendering: optimizeLegibility;
 }
 
-/* ------------------------------
-   Global layout
---------------------------------*/
 body {
   margin: 0;
   min-width: 320px;
@@ -43,9 +36,6 @@ body {
   padding: 2rem 0;
 }
 
-/* ------------------------------
-   Typography
---------------------------------*/
 h1, h2, h3, h4, h5 {
   margin: 0;
   font-weight: 700;
@@ -65,9 +55,6 @@ a:hover {
   color: var(--color-accent-hover);
 }
 
-/* ------------------------------
-   Buttons
---------------------------------*/
 button {
   font-family: inherit;
   font-weight: 500;
@@ -88,9 +75,7 @@ button:active {
   background-color: #333;
 }
 
-/* ------------------------------
-   Light Mode Support
---------------------------------*/
+
 @media (prefers-color-scheme: light) {
   :root {
     background-color: var(--color-bg-light);

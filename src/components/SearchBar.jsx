@@ -27,13 +27,12 @@ export default function SearchBar({
   });
    const handleKeyDown = (e) => {
     if (e.key === "Tab" && ghostText) {
-      e.preventDefault();               // Prevent losing focus
-      onChange(ghostText);              // Autofill with suggestion
-      onSelectSuggestion?.(ghostText);  // Optional: trigger suggestion select
+      e.preventDefault();               
+      onChange(ghostText);              
+      onSelectSuggestion?.(ghostText);  
     }
   };
 
-  // Capture input spacing dynamically (PROPER way)
   useEffect(() => {
     if (!inputRef.current) return;
 
@@ -50,7 +49,7 @@ export default function SearchBar({
 
   return (
     <Box sx={{ position: "relative", width: "100%" }} ref={wrapperRef}>
-      {/* Ghost Text perfectly aligned */}
+     
       {showGhost && (
         <Box
           sx={{
@@ -73,7 +72,6 @@ export default function SearchBar({
         </Box>
       )}
 
-      {/* Main MUI Input */}
       <TextField
         fullWidth
         variant="outlined"
@@ -82,7 +80,7 @@ export default function SearchBar({
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={handleKeyDown}
         inputRef={(el) => {
-          // anchor element for ghost alignment
+          
           inputRef.current = el?.querySelector("input");
         }}
       // InputProps={{

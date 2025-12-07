@@ -22,10 +22,8 @@ export default function Pagination({ page, setPage, hasNextPage }) {
         Prev
       </Button>
 
-      {/* Page Info */}
       <Typography variant="h6">Page {page + 1}</Typography>
 
-      {/* Next Button */}
       <Button
         variant="contained"
         endIcon={<ArrowForwardIcon />}

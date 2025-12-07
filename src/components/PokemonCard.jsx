@@ -31,12 +31,9 @@ export default function PokemonCard({ pokemon, onClick }) {
         position: "relative",
         borderRadius: 3,
         cursor: "pointer",
-
-        // 🔒 Fix card height
         height: 200,
         overflow: "hidden",
 
-        // Smooth hover without layout shift
         transition: "transform 0.25s ease, box-shadow 0.25s ease",
         "&:hover": {
           transform: "translateY(-4px) scale(1.03)",
@@ -54,7 +51,6 @@ export default function PokemonCard({ pokemon, onClick }) {
           p: 1,
         }}
       >
-        {/* ♥ Favorite Button */}
         <IconButton
           onClick={toggle}
           sx={{
@@ -68,10 +64,9 @@ export default function PokemonCard({ pokemon, onClick }) {
           {favorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
 
-        {/* Pokémon Image — locked height */}
         <Box
           sx={{
-            height: 100,           // 🔒 Fix image container height
+            height: 100,           
             width: "100%",
             display: "flex",
             justifyContent: "center",
@@ -92,13 +87,11 @@ export default function PokemonCard({ pokemon, onClick }) {
           />
         </Box>
 
-        {/* Pokémon Name — locked height */}
         <CardContent
           sx={{
             p: 0,
             mt: 1,
-            height: 40,     // 🔒 Fix name box height
-            // 🔒 Fix name box height
+            height: 40,    
             display: "flex",
             justifyContent: "center",
             alignItems: "center",

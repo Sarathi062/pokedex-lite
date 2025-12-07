@@ -30,21 +30,18 @@ export default function PokemonList({
 }) {
   const [selectedPokemon, setSelectedPokemon] = useState(null);
 
-  // 0 = All Pokémon, 1 = Liked Pokémon
   const [tab, setTab] = useState(0);
 
   const [favoriteList, setFavoriteList] = useState(getFavorites());
   const [favoriteDetails, setFavoriteDetails] = useState([]);
   const [loadingFavorites, setLoadingFavorites] = useState(false);
 
-  /** 🔥 Auto-switch to All Pokémon when the user searches */
   useEffect(() => {
     if (tab === 1) {
       setTab(0);
     }
   }, [search, pokemon]);
 
-  /** Listen to favorites changes globally */
   useEffect(() => {
     setFavoriteList(getFavorites());
 
@@ -55,10 +52,6 @@ export default function PokemonList({
     return unsubscribe;
   }, []);
 
-  /** Load favorites details whenever:
-   *  - Tab is "Liked Pokémon"
-   *  - Favorites list changes
-   */
   useEffect(() => {
     if (tab !== 1) return;
 
@@ -90,10 +83,8 @@ export default function PokemonList({
     loadDetails();
   }, [tab, favoriteList]);
 
-  /** Choose between all Pokémon & favorites */
   const currentList = tab === 0 ? pokemon : favoriteDetails;
 
-  // Safe normalize for case-insensitive search
   const normalize = (str) =>
     (str || "").toString().trim().replace(/\s+/g, "").toUpperCase();
 
@@ -103,8 +94,6 @@ export default function PokemonList({
     const nameKey = normalize(p?.name);
     return nameKey.includes(searchKey);
   });
-
-  /** Loading state */
   if ((loading && pokemon.length === 0) || loadingFavorites) {
     return (
       <Box display="flex" justifyContent="center" mt={10}>
@@ -113,7 +102,6 @@ export default function PokemonList({
     );
   }
 
-  /** Error state */
   if (error) {
     return (
       <Alert severity="error" sx={{ mt: 4, textAlign: "center" }}>
@@ -124,7 +112,6 @@ export default function PokemonList({
 
   return (
     <>
-      {/* Header with tabs */}
       <Stack
         direction="column"
         alignItems="center"
@@ -143,7 +130,6 @@ export default function PokemonList({
         </Tabs>
       </Stack>
 
-      {/* Main grid */}
       <Box sx={{ position: "relative", minHeight: "460px" }}>
         {displayedPokemon.length === 0 ? (
           <Box
@@ -182,14 +168,11 @@ export default function PokemonList({
         )}
       </Box>
 
-      {/* Pagination only for "All Pokémon" tab */}
       {tab === 0 && (
         <Box mt={4} display="flex" justifyContent="center">
           <Pagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
         </Box>
       )}
-
-      {/* Modal */}
       {selectedPokemon && (
         <PokemonModal
           pokemon={selectedPokemon}

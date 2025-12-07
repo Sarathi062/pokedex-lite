@@ -11,11 +11,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { keyframes } from "@mui/system";
 
-/* ------------------------- */
-/*   Surprise Reveal Anim    */
-/* ------------------------- */
 
-// Pokémon spinning + scaling reveal
 const spinReveal = keyframes`
   0%   { transform: scale(0) rotate(0deg); opacity: 0; }
   60%  { transform: scale(1.15) rotate(360deg); opacity: 1; }
@@ -23,7 +19,6 @@ const spinReveal = keyframes`
   100% { transform: scale(1) rotate(360deg); }
 `;
 
-// Shockwave glow behind Pokémon
 const shockwave = keyframes`
   0%   { opacity: 0; transform: scale(0.5); }
   40%  { opacity: 0.35; transform: scale(1.4); }
@@ -72,7 +67,6 @@ export default function PokemonModal({ pokemon, onClose }) {
         },
       }}
     >
-      {/* Header */}
       <DialogTitle sx={{ textAlign: "center", position: "relative" }}>
         <Typography
           variant="h5"
@@ -92,7 +86,6 @@ export default function PokemonModal({ pokemon, onClose }) {
       </DialogTitle>
 
       <DialogContent>
-        {/* Shockwave Glow */}
         <Box
           sx={{
             position: "relative",
@@ -101,7 +94,6 @@ export default function PokemonModal({ pokemon, onClose }) {
             mb: 2,
           }}
         >
-          {/* Expanding Circle - Surprise Shockwave */}
           <Box
             sx={{
               position: "absolute",
@@ -114,7 +106,6 @@ export default function PokemonModal({ pokemon, onClose }) {
             }}
           />
 
-          {/* Pokémon Image with Spin Reveal */}
           <img
             src={pokemon.sprites.front_default}
             alt={pokemon.name}
@@ -128,7 +119,6 @@ export default function PokemonModal({ pokemon, onClose }) {
           />
         </Box>
 
-        {/* Types */}
         <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
           Types
         </Typography>
@@ -146,7 +136,6 @@ export default function PokemonModal({ pokemon, onClose }) {
           ))}
         </Box>
 
-        {/* Abilities */}
         <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
           Abilities
         </Typography>
@@ -164,7 +153,6 @@ export default function PokemonModal({ pokemon, onClose }) {
           ))}
         </Box>
 
-        {/* Stats */}
         <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
           Stats
         </Typography>

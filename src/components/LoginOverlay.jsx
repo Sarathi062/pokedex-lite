@@ -2,7 +2,6 @@ import { useEffect } from "react";
 
 export default function LoginOverlay({ onLogin }) {
   useEffect(() => {
-    /* global google */
     google.accounts.id.initialize({
       client_id: "YOUR_CLIENT_ID.apps.googleusercontent.com",
       callback: handleLogin,
@@ -17,7 +16,6 @@ export default function LoginOverlay({ onLogin }) {
   function handleLogin(response) {
     const jwt = response.credential;
 
-    // Decode token → get user info
     const payload = JSON.parse(atob(jwt.split(".")[1]));
 
     const user = {

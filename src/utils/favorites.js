@@ -21,7 +21,7 @@ export const toggleFavorite = (name) => {
 
   localStorage.setItem("favorites", JSON.stringify(favs));
 
-  // 🔥 notify listeners
+
   window.dispatchEvent(new CustomEvent(FAVORITES_EVENT, { detail: favs }));
 
   return favs;
